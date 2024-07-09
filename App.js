@@ -1,25 +1,15 @@
-import Header from "./components/Header";
+import Header from './components/Header'
+import { Outlet } from 'react-router-dom'
 import './App.css'
-import SearchBar from "./components/SearchBar";
-import SelectMenu from "./components/SelectMenu";
-import CountriesList from "./components/CountriesList";
-import { useState } from "react";
+import { ThemeProvider } from './contexts/ThemeContext'
 
-
-function App() {
-  const [query, setQuery] = useState("")
+const App = () => {
   return (
-    <>
+    <ThemeProvider>
       <Header />
-      <main>
-        <div className="search-filter-container">
-          <SearchBar setQuery={setQuery} />
-          <SelectMenu />
-        </div>
-        <CountriesList setQuery={setQuery} query={query} />
-      </main>
-    </>
+      <Outlet />
+    </ThemeProvider>
   )
 }
 
-export default App;
+export default App
